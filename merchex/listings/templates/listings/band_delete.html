@@ -1,0 +1,17 @@
+{% extends 'navigation/base.html' %}
+
+{% block content %}
+
+<a href="{% url 'band-list'%}">Retour à la liste des groupes</a>
+
+<h2>Suppression de groupe</h2>
+<p>Etes vous sur de supprimer le groupe {{band.name}} (cette action sera irréversible) ?</p>
+
+<!-- Formulaire super simple donc pas besoin de créer une classe pour lui (mais on pourrait)-->
+<form action="" method="post">
+{% csrf_token %}
+<input type="submit" class="delete" name="action" value="Supprimer">
+<input type="submit" class="cancel" name="action" value="Annuler">
+</form>
+
+{% endblock %}

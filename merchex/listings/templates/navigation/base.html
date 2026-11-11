@@ -1,0 +1,28 @@
+{% load static %} <!-- le nom du dossier avec les syles-->
+
+<html>
+    <head><title>Merchex</title></head>
+    <link rel="stylesheet" href="{% static 'listings/styles.css' %}"/>
+    <body>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a> <!-- C'est le name donné dans urls.py--></li>
+                <li><a href="{% url 'band-list' %}">Groupes</a> <!-- C'est le name donné dans urls.py--></li>
+                <li><a href="{% url 'listing-list' %}">Listings</a></li>
+                <li><a href="{% url 'contact-us' %}">ContactUs</a></li>
+                <li><a href="{% url 'about-us' %}">About</a></li>
+                {% block navigationroute %}{% endblock %}
+            </ul>
+        </nav>
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        {% block content %}{% endblock %} <!-- Balise block et le nom c'est content. Dans les autres html, c'est entre
+        ce block qu'on écrira le body-->
+
+    </body>
+</html>

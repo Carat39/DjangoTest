@@ -1,0 +1,23 @@
+{% extends 'navigation/base.html' %}
+
+{% block navigationroute %}
+<li><a href="{% url 'listing-add' %}">Création Listings</a> <!-- C'est le name donné dans urls.py--></li>
+{% endblock %}
+
+{% block content %}
+
+<a class="cancel" href="{% url 'home'%}">Retour au menu</a>
+        
+<h1>Listings</h1>
+
+<ul>
+    {% for listing in listings %}    
+    <li class="list">
+        <a href="{% url 'listing-detail' listing.id %}">{{ listing.title }}</a>
+        <a class="modify" href="{% url 'listing-modify' listing.id %}">Modifier</a>
+        <a class="delete" href="{% url 'listing-delete' listing.id %}">Supprimer</a>
+    </li>
+    {% endfor %}
+</ul> 
+
+{% endblock %}

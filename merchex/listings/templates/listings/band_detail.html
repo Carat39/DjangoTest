@@ -1,0 +1,31 @@
+{% extends 'navigation/base.html' %}
+
+{% block content %}
+
+<a class="cancel" href="{% url 'band-list'%}">Retour à la liste des groupes</a>
+
+<h2>{{band.name}}</h2>
+
+<ul>
+    <li>Genre : {{band.get_genre_display}}</li> <!-- !!! get_genre_display méthode fourni pour ne pas afficher AR par exemple-->
+    <li>Année de formation : {{band.year_formed}}</li>
+    <li>Actif : {{band.active|yesno}}</li>
+    {% if band.official_homepage %}
+        <li><a href="{{ band.official_homepage }}">{{ band.official_homepage }}</a></li>
+    {% endif %}
+    {% if listings %}
+        <h3>Listings :</h3>
+        {% for listing in listings %}
+            <li><a href="{% url 'listing-detail' listing.id %}">{{ listing.title }}</a></li>
+        {% endfor %}
+    {% endif %}
+
+</ul>
+
+<p>{{band.biography}} </p> <br>
+
+<a class="modify" href="{% url 'band-modify' band.id %}">Modifier</a>
+<a class="delete" href="{% url 'band-delete' band.id %}">Supprimer</a>
+
+
+{% endblock %}

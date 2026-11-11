@@ -1,0 +1,40 @@
+{% extends 'navigation/base.html' %}
+
+{% block navigationroute %}
+
+<li><a href="{% url 'band-add' %}">Création Groupes</a> <!-- C'est le name donné dans urls.py--></li>
+
+{% endblock %}
+
+{% block content %}
+
+<a class="cancel" href="{% url 'home'%}">Retour au menu</a>
+
+<h1>Groupes</h1>
+<!--<p>
+    J'ai..
+    {% if bands|length < 5 %}
+        peu de
+    {% elif bands|length < 10 %}
+        quelques
+    {% else %}
+        beaucoup de
+    {% endif %}
+        groupes préférés.
+</p>
+-->
+<ul>
+    {% for band in bands %}
+    <li class="list">
+        <a href="{% url 'band-detail' band.id %}">{{ band.name }}</a>
+        <a class="modify" href="{% url 'band-modify' band.id %}">Modifier</a>
+        <a class="delete" href="{% url 'band-delete' band.id %}">Supprimer</a>
+    </li>
+    {% endfor %}
+</ul> 
+
+{% endblock %}
+
+<!--
+| pour appliquer un filtre
+-->

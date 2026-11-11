@@ -1,0 +1,14 @@
+{% extends 'navigation/base.html' %}
+
+{% block content %}
+
+<h1>ContactUs</h1>
+<p>Nous sommes là pour vous aider.</p>
+
+<form action="" method="post"> <!-- action = l'endroit ou on envoie les données (ici en mode POST)-->
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}

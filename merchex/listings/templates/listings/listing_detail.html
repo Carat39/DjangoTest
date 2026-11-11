@@ -1,0 +1,21 @@
+{% extends 'navigation/base.html' %}
+
+{% block content %}
+
+<a class="cancel" href="{% url 'listing-list'%}">Retour aux annonces</a>
+
+<h2>{{listing.title}}</h2>
+
+<ul>
+    <li>Type : {{listing.get_type_display}}</li>
+    <li>Year : {{listing.year}}</li>
+    <li>Sold : {{listing.sold|yesno}}</li>
+    
+</ul>
+
+<p>{{listing.description}}</p>
+
+<a class="modify" href="{% url 'listing-modify' listing.id %}">Modifier</a>
+<a class="delete" href="{% url 'listing-delete' listing.id %}">Supprimer</a>
+
+{% endblock %}

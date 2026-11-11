@@ -1,0 +1,13 @@
+{% extends 'navigation/base.html' %}
+
+{% block content %}
+
+<h1>Formulaire de création d'un nouveau Listing</h1>
+
+<form action="" method="post" > <!--  novalidate empêche la validation côté client-->
+    {% csrf_token %} <!-- Cross Site Request Forgery (création d'un token pour les requêtes POST)-->
+    {{ form.as_p }}
+    <input type="submit" value="Envoyer">
+</form>
+
+{% endblock %}
